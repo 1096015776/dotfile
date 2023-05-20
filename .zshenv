@@ -44,4 +44,6 @@ fi
 
 setopt rcs
 export XDG_DATA_HOME=~/.local/share
+export XDG_CONFIG_HOME=~/.config
 export EDITOR="nvim"
+

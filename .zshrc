@@ -107,3 +107,7 @@ bindkey -s "^n" "nvim\n"
 bindkey -s "^e" "ranger\n"
 # linux nvm
 # source /usr/share/nvm/init-nvm.sh
+# mac
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"

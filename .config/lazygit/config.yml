@@ -32,3 +32,6 @@ reporting: "off"
 splashupdatesindex: 0
 quitOnTopLevelReturn: true
 startuppopupversion: 1
+promptToReturnFromSubprocess: false
+# os:
+#   editCommand: 'nvim'

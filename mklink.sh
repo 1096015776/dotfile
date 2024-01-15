@@ -7,6 +7,7 @@ ln -s ~/dotfile/.config/nvim ~/.config/nvim
 ln -s ~/dotfile/.config/ranger ~/.config/ranger
 ln -s ~/dotfile/.config/ripgrep ~/.config/ripgrep
 ln -s ~/dotfile/.config/tmux ~/.config/tmux
+ln -s ~/dotfile/bin/ ~/
 
 # copy zsh config
 cd ~

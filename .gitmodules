@@ -1,6 +1,3 @@
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = git@github.com:1096015776/lazyvim.git

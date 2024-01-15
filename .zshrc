@@ -103,9 +103,10 @@ alias ls="${aliases[ls]:-ls} -A"
 setopt glob_dots     # no special treatment for file names with a leading dot
 setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
-bindkey -s "^G" "lazygit\n"
-bindkey -s "^n" "nvim\n"
-bindkey -s "^e" "ranger\n"
+# bindkey -s "^G" "lazygit\n"
+# bindkey -s "^n" "nvim\n"
+# bindkey -s "^e" "ranger\n"
+
 # linux nvm
 # source /usr/share/nvm/init-nvm.sh
 # mac

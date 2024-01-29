@@ -1,6 +1,8 @@
 -- if true then return {} end
 
 return {
+  --tmux nav
+  "alexghergh/nvim-tmux-navigation",
   -- add gruvbox
   { "navarasu/onedark.nvim" },
 
@@ -14,8 +16,8 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     opts = {
-      current_line_blame = true
-    }
+      current_line_blame = true,
+    },
   },
   {
     "williamboman/mason.nvim",
@@ -26,9 +28,8 @@ return {
         "lua-language-server",
         "shfmt",
         "stylua",
-        "vetur-vls"
+        "vetur-vls",
       },
-    }
-  }
-
+    },
+  },
 }

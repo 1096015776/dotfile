@@ -8,5 +8,4 @@ proxy_on ()
 un_proxy(){
   unset https_proxy http_proxy all_proxy
 }
-proxy_on
 

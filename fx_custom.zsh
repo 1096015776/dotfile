@@ -1,4 +1,4 @@
-proxy_ip=$(cat /etc/resolv.conf|grep nameserver |awk -F 'nameserver' '{print $2 }')
+proxy_ip=$(cat /etc/resolv.conf|grep nameserver |awk -F 'nameserver ' '{print $2 }')
 proxy_on ()
 {
   echo 'start proxy'

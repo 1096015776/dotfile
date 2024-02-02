@@ -1,3 +1,4 @@
+# vpn setting
 proxy_ip=$(cat /etc/resolv.conf|grep nameserver |awk -F 'nameserver ' '{print $2 }')
 proxy_on ()
 {
@@ -9,3 +10,7 @@ un_proxy(){
   unset https_proxy http_proxy all_proxy
 }
 
+alias ra=ranger
+alias lg=lazygit
+alias vi=nvim
+alias tm="tmux attach -t code || tmux new -s code"

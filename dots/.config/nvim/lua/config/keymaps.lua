@@ -17,5 +17,8 @@ map("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
 
 -- use ranger open file
 map("n", "<localleader>e", function()
-  Util.terminal({ "ranger" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "rounded" })
+  Util.terminal({ "ranger" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "single" })
 end, { desc = "ranger" })
+map("n", "<leader>gg", function()
+  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "single" })
+end, { desc = "lazygit" })

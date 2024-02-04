@@ -124,5 +124,5 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 #
 
-source ./fx_custom.zsh
+source ~/fx_custom.zsh
 

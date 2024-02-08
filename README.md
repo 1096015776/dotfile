@@ -1,6 +1,6 @@
 # My dotfile
 
-## ![main](.resource/main.png)
+## ![main](resource/main.png)
 
 ## env
 

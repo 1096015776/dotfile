@@ -1,5 +1,7 @@
 # My dotfile
 
+## ![main](.resource/main.png)
+
 ## env
 
 os: wsl + arch<br>

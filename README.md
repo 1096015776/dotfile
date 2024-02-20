@@ -25,7 +25,7 @@ pacman-key --init
 pacman-key --populate
 pacman -Syy archlinux-keyring
 # tool
-pacman -S lazygit neovim ranger ripgrep fd tmux git-delta zsh npm atool zip unzip
+pacman -S lazygit neovim ranger ripgrep fd tmux git-delta zsh npm atool zip unzip neofetch
 # base dev
 pacman -S base-devel openssh
 ```

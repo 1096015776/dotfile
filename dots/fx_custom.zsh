@@ -13,4 +13,5 @@ un_proxy(){
 alias ra=ranger
 alias lg=lazygit
 alias vi=nvim
+alias vim=nvim
 alias tm="tmux attach -t code || tmux new -s code"

@@ -27,6 +27,7 @@ return {
         "shfmt",
         "stylua",
         "vetur-vls",
+        "typescript-language-server"
       },
     },
   },

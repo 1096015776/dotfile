@@ -27,7 +27,7 @@ return {
         "shfmt",
         "stylua",
         "vetur-vls",
-        "typescript-language-server"
+        "typescript-language-server",
       },
     },
   },
@@ -37,6 +37,14 @@ return {
     init = function()
       vim.g.unception_delete_replaced_buffer = true
       vim.g.unception_enable_flavor_text = false
+    end,
+  },
+  --bookmark
+  {
+    "tomasky/bookmarks.nvim",
+    init = function()
+      require("bookmarks").setup()
+      require("telescope").load_extension("bookmarks")
     end,
   },
 }

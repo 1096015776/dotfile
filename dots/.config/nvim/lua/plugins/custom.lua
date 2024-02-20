@@ -47,8 +47,4 @@ return {
       require("telescope").load_extension("bookmarks")
     end,
   },
-  {
-    "LintaoAmons/easy-commands.nvim",
-    event = "VeryLazy",
-  },
 }

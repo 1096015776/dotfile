@@ -4,7 +4,8 @@
 local map = vim.keymap.set
 local Util = require("lazyvim.util")
 map("i", "jk", "<esc>")
-map("v", "<c-c>", '"*y')
+-- map("v", "<c-c>", '"*y')
+vim.api.nvim_set_keymap("v", "<c-c>", [["+y :call system('clip.exe', @+)<cr>]], { noremap = true, silent = true })
 
 -- tmux
 local nvim_tmux_nav = require("nvim-tmux-navigation")

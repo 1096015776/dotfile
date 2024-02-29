@@ -34,3 +34,7 @@ map("n", "mn", require("bookmarks").bookmark_next, { desc = "bookmark next" }) -
 map("n", "mp", require("bookmarks").bookmark_prev, { desc = "bookmark prev" }) -- jump to previous mark in local buffer
 map("n", "ml", require("bookmarks").bookmark_list, { desc = "bookmark list" }) -- show marked file list in quickfix window
 map("n", "<leader>m", ":Telescope bookmarks list<cr>", { desc = "bookmark telescope" }) -- show marked file list in quickfix window
+
+-- line jump
+map({ "n","v" }, "H", "^")
+map({ "n","v" }, "L", "g_")

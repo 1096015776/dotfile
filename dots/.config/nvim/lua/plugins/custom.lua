@@ -48,4 +48,30 @@ return {
     end,
   },
   "LunarVim/bigfile.nvim",
+  "sindrets/diffview.nvim",
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        mappings = {
+          ["<c-f>"] = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_parent_id()
+            if node.type == "directory" then
+              path = node:get_id()
+            end
+            require("neo-tree").close_all()
+            require("spectre").open({
+              open_cmd = "vnew",
+              is_insert_mode = true,
+              cwd = path,
+              search_text = "",
+              is_close = false,
+            })
+          end,
+        },
+      },
+    },
+  },
+  { "akinsho/toggleterm.nvim", version = "*", config = true },
 }

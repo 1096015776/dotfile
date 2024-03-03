@@ -42,5 +42,5 @@ my wallpaper and windows-terminal config
 I have a mklinks zsh to move dotfile<br>
 ### search text
 ```shell
-grep -rh '<el-'|awk -F el- '{print $2}'|awk -F '' '${print$1}'|sort|uniq
+grep -rh '<el-'|awk -F el- '{print $2}'|awk -F ' ' '{print$1}'|sort|uniq
 ```

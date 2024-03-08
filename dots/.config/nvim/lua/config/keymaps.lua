@@ -38,3 +38,5 @@ map("n", "<leader>m", ":Telescope bookmarks list<cr>", { desc = "bookmark telesc
 -- line jump
 map({ "n","v" }, "H", "^")
 map({ "n","v" }, "L", "g_")
+-- map({ "n","v" }, "H", "^")
+-- map({ "n","v" }, "L", "g_")

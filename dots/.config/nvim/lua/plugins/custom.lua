@@ -69,9 +69,33 @@ return {
               is_close = false,
             })
           end,
+          ["<c-d>"] = function(state)
+            local node = state.tree:get_node()
+            local path = node:get_parent_id()
+            if node.type == "directory" then
+              path = node:get_id()
+            end
+            require("neo-tree").close_all()
+            vim.cmd("DiffviewFileHistory " .. path)
+          end,
         },
       },
     },
   },
-  { "akinsho/toggleterm.nvim", version = "*", config = true },
+  {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = true,
+    opts = {
+      size = 12,
+      open_mapping = [[<c-t>]],
+      shade_filetypes = {},
+      shade_terminals = true,
+      shading_factor = 1,
+      start_in_insert = true,
+      persist_size = true,
+      close_on_exit = true,
+      direction = "horizontal",
+    },
+  },
 }

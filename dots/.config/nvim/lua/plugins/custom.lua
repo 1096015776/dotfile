@@ -195,7 +195,4 @@ return {
       return opts
     end,
   },
-  {
-    "pocco81/true-zen.nvim",
-  },
 }

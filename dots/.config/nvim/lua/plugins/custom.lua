@@ -195,4 +195,5 @@ return {
       return opts
     end,
   },
+  "folke/zen-mode.nvim"
 }

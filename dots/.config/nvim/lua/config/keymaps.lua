@@ -46,3 +46,10 @@ end, { noremap = true, silent = true })
 map("n", "<localleader>r", function()
   Util.terminal({ "zsh" }, term_opts)
 end, { noremap = true, silent = true })
+map({ "n", "v" }, "<c-z>", function()
+  require("zen-mode").toggle({
+    window = {
+      width = .85, -- width will be 85% of the editor width
+    },
+  })
+end)

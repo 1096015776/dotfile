@@ -15,13 +15,14 @@ map("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
 map("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
 map("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
 map("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
+local term_opts = { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "single" }
 
 -- use ranger open file
 map("n", "<localleader>e", function()
-  Util.terminal({ "ranger" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "single" })
+  Util.terminal({ "ranger" }, term_opts)
 end, { desc = "ranger" })
 map("n", "<localleader>g", function()
-  Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "single" })
+  Util.terminal({ "lazygit" }, term_opts)
 end, { desc = "lazygit" })
 map("n", "<leader>%", "<c-w>v", { desc = "| window" })
 map("n", '<leader>"', "<c-w>s", { desc = "- window" })
@@ -36,7 +37,12 @@ map("n", "ml", require("bookmarks").bookmark_list, { desc = "bookmark list" }) -
 map("n", "<leader>m", ":Telescope bookmarks list<cr>", { desc = "bookmark telescope" }) -- show marked file list in quickfix window
 
 -- line jump
-map({ "n","v" }, "H", "^")
-map({ "n","v" }, "L", "g_")
--- map({ "n","v" }, "H", "^")
--- map({ "n","v" }, "L", "g_")
+map({ "n", "v" }, "H", "^")
+map({ "n", "v" }, "L", "g_")
+
+map("n", "<c-g>", function()
+  Util.terminal({ "lazygit" }, term_opts)
+end, { noremap = true, silent = true })
+map("n", "<localleader>r", function()
+  Util.terminal({ "zsh" }, term_opts)
+end, { noremap = true, silent = true })

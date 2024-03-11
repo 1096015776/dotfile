@@ -7,10 +7,10 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never --24-bit-color=never --syntax-theme="OneHalfDark"
-    keybinding:
-      commits:
-        moveDownCommit: '<c-J>'
-        moveUpCommit: '<c-K>'
+keybinding:
+  commits:
+    moveDownCommit: '<c-d>'
+    moveUpCommit: '<c-u>'
 gui:
   border: "rounded"
   showBottomLine: false

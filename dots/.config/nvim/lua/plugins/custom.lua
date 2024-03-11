@@ -136,7 +136,7 @@ return {
               return vim.bo[buf].buftype == "help"
             end,
           },
-          { title = "Spectre", ft = "spectre_panel", size = { height = 0.4 } },
+          -- { title = "Spectre", ft = "spectre_panel", size = { height = 0.4 } },
           { title = "Neotest Output", ft = "neotest-output-panel", size = { height = 15 } },
         },
         left = {
@@ -173,6 +173,9 @@ return {
           },
           "neo-tree",
         },
+        -- right = {
+        --   { title = "Spectre", ft = "spectre_panel", size = { height = 0.4, width = 0.4 } },
+        -- },
         keys = {
           -- increase width
           ["<c-Right>"] = function(win)
@@ -195,5 +198,5 @@ return {
       return opts
     end,
   },
-  "folke/zen-mode.nvim"
+  "folke/zen-mode.nvim",
 }

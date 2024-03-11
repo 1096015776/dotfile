@@ -27,6 +27,9 @@ end, { desc = "lazygit" })
 map("n", "<leader>%", "<c-w>v", { desc = "| window" })
 map("n", '<leader>"', "<c-w>s", { desc = "- window" })
 map("n", "<localleader>q", "<c-w>q", { desc = "close window" })
+map("n", "<localleader>/", function()
+  require("spectre").toggle()
+end, { desc = "toggle search" })
 --bookmark map
 map("n", "mm", require("bookmarks").bookmark_toggle, { desc = "bookmark toggle" })
 map("n", "mi", require("bookmarks").bookmark_ann, { desc = "bookmark annonte" })
@@ -34,7 +37,9 @@ map("n", "mc", require("bookmarks").bookmark_clean, { desc = "bookmark clean" })
 map("n", "mn", require("bookmarks").bookmark_next, { desc = "bookmark next" }) -- jump to next mark in local buffer
 map("n", "mp", require("bookmarks").bookmark_prev, { desc = "bookmark prev" }) -- jump to previous mark in local buffer
 map("n", "ml", require("bookmarks").bookmark_list, { desc = "bookmark list" }) -- show marked file list in quickfix window
-map("n", "<leader>m", ":Telescope bookmarks list<cr>", { desc = "bookmark telescope" }) -- show marked file list in quickfix window
+map("n", "<leader>m", function()
+  vim.cmd("Telescope bookmarks list")
+end, { desc = "bookmark telescope" }) -- show marked file list in quickfix window
 
 -- line jump
 map({ "n", "v" }, "H", "^")
@@ -45,11 +50,22 @@ map("n", "<c-g>", function()
 end, { noremap = true, silent = true })
 map("n", "<localleader>r", function()
   Util.terminal({ "zsh" }, term_opts)
-end, { noremap = true, silent = true })
-map({ "n", "v" }, "<c-z>", function()
+end, { noremap = true, silent = true, desc = "shell" })
+map({ "n", "v" }, "<localleader>z", function()
   require("zen-mode").toggle({
     window = {
-      width = .85, -- width will be 85% of the editor width
+      width = 0.85, -- width will be 85% of the editor width
     },
   })
-end)
+end, {
+  noremap = true,
+  silent = true,
+  desc = "zen",
+})
+map({ "n", "v" }, "<c-p>", function()
+  vim.cmd("Telescope find_files")
+end, {
+  noremap = true,
+  silent = true,
+  desc = "find_files",
+})

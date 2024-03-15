@@ -69,3 +69,10 @@ end, {
   silent = true,
   desc = "find_files",
 })
+map("v", "p", "P")
+map("v", "P", "p")
+map("i", "<c-e>", function()
+  vim.api.nvim_put({ vim.fn.getreg("0") }, "c", false, true)
+end)
+map("v", "<leader>y", '"*y')
+map("n", "<leader>p", '"*p')

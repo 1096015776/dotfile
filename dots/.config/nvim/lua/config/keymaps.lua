@@ -76,3 +76,10 @@ map("i", "<c-e>", function()
 end)
 map("v", "<leader>y", '"*y')
 map("n", "<leader>p", '"*p')
+map("n", "<2-LeftMouse>", function()
+  -- 将光标所在单词转义后设为搜索模式，并高亮匹配项
+  vim.fn.setreg("/", "\\V\\<" .. vim.fn.escape(vim.fn.expand("<cword>"), "\\") .. "\\>")
+  vim.api.nvim_command("set hls")
+  -- 将光标所在单词复制到系统剪贴板
+  vim.fn.setreg("+", vim.fn.expand("<cword>"))
+end, { silent = true })

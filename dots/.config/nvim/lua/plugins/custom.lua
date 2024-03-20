@@ -198,5 +198,11 @@ return {
   --     return opts
   --   end,
   -- },
-  "folke/zen-mode.nvim",
+  -- "folke/zen-mode.nvim",
+  {
+    "Pocco81/true-zen.nvim",
+    config = function()
+      require("true-zen").setup({})
+    end,
+  },
 }

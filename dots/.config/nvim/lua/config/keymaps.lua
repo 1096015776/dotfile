@@ -51,17 +51,6 @@ end, { noremap = true, silent = true })
 map("n", "<localleader>r", function()
   Util.terminal({ "zsh" }, term_opts)
 end, { noremap = true, silent = true, desc = "shell" })
-map({ "n", "v" }, "<localleader>z", function()
-  require("zen-mode").toggle({
-    window = {
-      width = 0.85, -- width will be 85% of the editor width
-    },
-  })
-end, {
-  noremap = true,
-  silent = true,
-  desc = "zen",
-})
 map({ "n", "v" }, "<c-p>", function()
   vim.cmd("Telescope find_files")
 end, {
@@ -83,3 +72,8 @@ map("n", "<2-LeftMouse>", function()
   -- 将光标所在单词复制到系统剪贴板
   vim.fn.setreg("+", vim.fn.expand("<cword>"))
 end, { silent = true })
+map("n", "<leader>zn", ":TZNarrow<CR>", {silent=true})
+map("v", "<leader>zn", ":'<,'>TZNarrow<CR>", {silent=true})
+map("n", "<leader>zf", ":TZFocus<CR>", {silent=true})
+map("n", "<leader>zm", ":TZMinimalist<CR>", {silent=true})
+map("n", "<leader>za", ":TZAtaraxis<CR>", {silent=true})

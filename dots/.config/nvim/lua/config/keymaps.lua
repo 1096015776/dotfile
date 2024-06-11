@@ -1,79 +1,48 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-local map = vim.keymap.set
-local Util = require("lazyvim.util")
-map("i", "jk", "<esc>")
--- map("v", "<c-c>", '"*y')
-vim.api.nvim_set_keymap("v", "<c-c>", [["+y :call system('clip.exe', @+)<cr>]], { noremap = true, silent = true })
+local set = vim.keymap.set
+local opt = { noremap = true, silent = true }
 
--- tmux
-local nvim_tmux_nav = require("nvim-tmux-navigation")
-map("n", "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-map("n", "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-map("n", "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-map("n", "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-map("n", "<C-\\>", nvim_tmux_nav.NvimTmuxNavigateLastActive)
-map("n", "<C-Space>", nvim_tmux_nav.NvimTmuxNavigateNext)
-local term_opts = { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "single" }
+-- nav
+set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>", { desc = "Navigate Left", silent = true })
+set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>", { desc = "Navigate Right", silent = true })
+set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>", { desc = "Navigate Up", silent = true })
+set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>", { desc = "Navigate Down", silent = true })
+set({ "n", "v" }, "H", "^")
+set({ "n", "v" }, "L", "g_")
 
--- use ranger open file
-map("n", "<localleader>e", function()
-  Util.terminal({ "ranger" }, term_opts)
-end, { desc = "ranger" })
-map("n", "<localleader>g", function()
-  Util.terminal({ "lazygit" }, term_opts)
-end, { desc = "lazygit" })
-map("n", "<leader>%", "<c-w>v", { desc = "| window" })
-map("n", '<leader>"', "<c-w>s", { desc = "- window" })
-map("n", "<localleader>q", "<c-w>q", { desc = "close window" })
-map("n", "<localleader>/", function()
-  require("spectre").toggle()
-end, { desc = "toggle search" })
---bookmark map
-map("n", "mm", require("bookmarks").bookmark_toggle, { desc = "bookmark toggle" })
-map("n", "mi", require("bookmarks").bookmark_ann, { desc = "bookmark annonte" })
-map("n", "mc", require("bookmarks").bookmark_clean, { desc = "bookmark clean" }) -- clean all marks in local buffer
-map("n", "mn", require("bookmarks").bookmark_next, { desc = "bookmark next" }) -- jump to next mark in local buffer
-map("n", "mp", require("bookmarks").bookmark_prev, { desc = "bookmark prev" }) -- jump to previous mark in local buffer
-map("n", "ml", require("bookmarks").bookmark_list, { desc = "bookmark list" }) -- show marked file list in quickfix window
-map("n", "<leader>m", function()
-  vim.cmd("Telescope bookmarks list")
-end, { desc = "bookmark telescope" }) -- show marked file list in quickfix window
+-- use
 
--- line jump
-map({ "n", "v" }, "H", "^")
-map({ "n", "v" }, "L", "g_")
+set({ "n", "v" }, "<localleader>d", function()
+  vim.cmd("DiffviewFileHistory %")
+end, { desc = "fileHistory" })
+set({ "n", "v" }, "<localleader>q", ":q<cr>", opt)
+set("n", "<localleader><localleader>", "<cmd>Telescope smart_open<cr>", { desc = "Smart open", noremap = true })
+set("n", "<leader><leader>", "<c-^>")
+set("n", "<leader>ww", "<CMD>w<CR><ESC>", { desc = "Save File" })
+set("n", "<leader>wq", "<CMD>wq<CR>", { desc = "Save File And Quit", silent = true })
+set("i", "jk", "<esc>")
+set("n", "<leader>dd", LazyVim.ui.bufremove, { desc = "Delete Buffer", silent = true })
+set("n", "i", function()
+  return string.match(vim.api.nvim_get_current_line(), "%g") == nil and "cc" or "i"
+end, { expr = true, noremap = true })
+set({ "n", "v" }, "<c-p>", LazyVim.telescope("files", { cwd = false }), opt)
 
-map("n", "<c-g>", function()
-  Util.terminal({ "lazygit" }, term_opts)
-end, { noremap = true, silent = true })
-map("n", "<localleader>r", function()
-  Util.terminal({ "zsh" }, term_opts)
-end, { noremap = true, silent = true, desc = "shell" })
-map({ "n", "v" }, "<c-p>", function()
-  vim.cmd("Telescope find_files")
-end, {
-  noremap = true,
-  silent = true,
-  desc = "find_files",
-})
-map("v", "p", "P")
-map("v", "P", "p")
-map("i", "<c-e>", function()
-  vim.api.nvim_put({ vim.fn.getreg("0") }, "c", false, true)
-end)
-map("v", "<leader>y", '"*y')
-map("n", "<leader>p", '"*p')
-map("n", "<2-LeftMouse>", function()
-  -- 将光标所在单词转义后设为搜索模式，并高亮匹配项
-  vim.fn.setreg("/", "\\V\\<" .. vim.fn.escape(vim.fn.expand("<cword>"), "\\") .. "\\>")
-  vim.api.nvim_command("set hls")
-  -- 将光标所在单词复制到系统剪贴板
-  vim.fn.setreg("+", vim.fn.expand("<cword>"))
-end, { silent = true })
-map("n", "<leader>zn", ":TZNarrow<CR>", {silent=true})
-map("v", "<leader>zn", ":'<,'>TZNarrow<CR>", {silent=true})
-map("n", "<leader>zf", ":TZFocus<CR>", {silent=true})
-map("n", "<leader>zm", ":TZMinimalist<CR>", {silent=true})
-map("n", "<leader>za", ":TZAtaraxis<CR>", {silent=true})
+set("n", "<leader>fB", "<cmd>Telescope file_browser<cr>", { desc = "File browser", noremap = true })
+set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Undo history", noremap = true })
+set("n", "<leader>fm", "<cmd>Telescope media_files<cr>", { desc = "Media files", noremap = true })
+set("n", "<leader>fs", "<cmd>Telescope smart_open<cr>", { desc = "Smart open", noremap = true })
+set("n", "<leader><leader>", "<c-^>")
+
+-- clipboard setting
+set("v", "p", "P")
+set("v", "P", "p")
+set("v", "<leader>y", '"+y')
+set("v", "<c-c>", [["+y :call system('clip.exe', @+)<cr>]], opt)
+set("i", "<c-v>", "<c-r>+", opt)
+set("n", "<c-v>", '"+p', opt)
+set("v", "<c-x>", '"+d', opt)
+set("n", "<c-x>", '"+dd', opt)
+set("n", "dd", '"_dd', opt)
+set("v", "d", '"_d', opt)
+set("n", "x", '"_x', opt)
+set("v", "x", '"_x', opt)
+set("n", "<localleader>p", '"+p', opt)

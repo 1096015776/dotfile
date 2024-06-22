@@ -2,7 +2,6 @@ lastupdatecheck: 0
 recentrepos:
     - /root/dotfile
     - /mnt/c/Users/方玺/yasb
-    - /root/project/vue-element-admin
 startuppopupversion: 5
 lastversion: 0.42.0
 customcommandshistory: []

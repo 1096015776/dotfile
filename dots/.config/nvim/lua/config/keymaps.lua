@@ -24,7 +24,7 @@ set("n", "<leader>dd", LazyVim.ui.bufremove, { desc = "Delete Buffer", silent = 
 set("n", "i", function()
   return string.match(vim.api.nvim_get_current_line(), "%g") == nil and "cc" or "i"
 end, { expr = true, noremap = true })
-set({ "n", "v" }, "<c-p>", LazyVim.telescope("files", { cwd = false }), opt)
+-- set({ "n", "v" }, "<c-p>", LazyVim.telescope("files", { cwd = false }), opt)
 
 set("n", "<leader>fB", "<cmd>Telescope file_browser<cr>", { desc = "File browser", noremap = true })
 set("n", "<leader>fu", "<cmd>Telescope undo<cr>", { desc = "Undo history", noremap = true })
